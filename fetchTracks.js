@@ -1,36 +1,31 @@
 import { OAuthToken, clientSecret, clientID } from "./spotifyPasswordAndKeys.js";
-import request from 'request';
+// import request from 'request';
 
-function fetchResults() {
-    var authOptions = {
-        url: 'https://accounts.spotify.com/api/token',
+async function fetchResults() {
+    const authorization = btoa(clientID + ':' + clientSecret)
+    const response = await fetch(
+        'https://accounts.spotify.com/api/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + authorization
+            },
+            body: 'grant_type=client_credentials'
+        })
+
+    const data = await response.json();
+
+    const token = data.access_token
+
+    const r2 = await fetch('https://api.spotify.com/v1/search?q=victor&type=track', {
+        method: 'GET',
         headers: {
-            'Authorization': 'Basic ' + (new Buffer(clientID + ':' + clientSecret).toString('base64'))
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
         },
-        form: {
-            grant_type: 'client_credentials'
-        },
-        json: true
-    };
+    })
 
-    request.post(authOptions, function(error, response, body) {
-        if (!error && response.statusCode === 200) {
-            var token = body.access_token;
-
-            var options = {
-                url: 'https://api.spotify.com/v1/search?q=remaster%2520track%3ADoxy%2Bartist%3AMiles%2520Davis&type=track%2Cartist&market=ES&limit=10&offset=5',
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
-                },
-                json: true
-            };
-            request.get(options, function(error, response, body) {
-                console.log(body);
-            });
-        }
-    });
+    console.log(await r2.json());
 }
 fetchResults();
