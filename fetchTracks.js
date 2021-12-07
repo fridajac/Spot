@@ -15,8 +15,10 @@ async function fetchResults() {
     const data = await response.json();
 
     const token = data.access_token
+    var searchWord = 'Rihanna'
+    var limit = 10;
 
-    const trackResponse = await fetch('https://api.spotify.com/v1/search?q=victor&type=track', {
+    const trackResponse = await fetch('https://api.spotify.com/v1/search?q=' + searchWord + '&limit=' + limit + '&type=track', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -26,4 +28,5 @@ async function fetchResults() {
     })
     console.log(await trackResponse.json());
 }
+
 fetchResults();
