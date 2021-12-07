@@ -1,5 +1,4 @@
 import { OAuthToken, clientSecret, clientID } from "./spotifyPasswordAndKeys.js";
-// import request from 'request';
 
 async function fetchResults() {
     const authorization = btoa(clientID + ':' + clientSecret)
@@ -17,7 +16,7 @@ async function fetchResults() {
 
     const token = data.access_token
 
-    const r2 = await fetch('https://api.spotify.com/v1/search?q=victor&type=track', {
+    const trackResponse = await fetch('https://api.spotify.com/v1/search?q=victor&type=track', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -25,7 +24,6 @@ async function fetchResults() {
             'Authorization': 'Bearer ' + token
         },
     })
-
-    console.log(await r2.json());
+    console.log(await trackResponse.json());
 }
 fetchResults();
