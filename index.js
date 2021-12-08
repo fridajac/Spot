@@ -1,17 +1,19 @@
-import { fetchResults } from "./fetchTracks.js"
+import { fetchTracks } from "./fetchTracks.js"
 import { fetchCityName } from "./fetchCityName.js"
 
-getCurrentPosition();
+main();
 
-function getCurrentPosition() {
-    window.navigator.geolocation
-        .getCurrentPosition(success, console.log);
+async function main() {
+    const position = await getCurrentPosition();
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const cityName = await fetchCityName(latitude, longitude);
+    const trackList = await fetchTracks(cityName);
+    console.log(trackList);
 }
 
-function success(data) {
-    const latitude = data.coords.latitude;
-    const longitude = data.coords.longitude;
-    const cityName = fetchCityName(latitude, longitude);
-    //const listWithTracks = fetchResults(cityName);
-    //console.log(listWithTracks);
+function getCurrentPosition() {
+    return new Promise(function(resolve, reject) {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
 }
