@@ -1,18 +1,19 @@
-import { fetchResults } from "./fetchTracks.js"
+import { fetchTracks } from "./fetchTracks.js"
+import { fetchCityName } from "./fetchCityName.js"
 
-getCurrentPosition();
+main();
+
+async function main() {
+    const position = await getCurrentPosition();
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const cityName = await fetchCityName(latitude, longitude);
+    const trackList = await fetchTracks(cityName);
+    console.log(trackList);
+}
 
 function getCurrentPosition() {
-    window.navigator.geolocation
-        .getCurrentPosition(success, console.log);
+    return new Promise(function(resolve, reject) {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
 }
-
-function success(data) {
-    const latitude = data.coords.latitude;
-    const longitude = data.coords.longitude;
-    // const cityName = fetchCityName(latitude, longitude);
-    fetchResults(cityName);
-}
-
-//anropa Bennys, får tillbaka en var cityName;
-var cityName = 'Malmö';

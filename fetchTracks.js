@@ -1,6 +1,6 @@
 import { OAuthToken, clientSecret, clientID } from "./spotifyPasswordAndKeys.js";
 
-export async function fetchResults(searchWord) {
+export async function fetchTracks(searchWord) {
     const authorization = btoa(clientID + ':' + clientSecret)
     const response = await fetch(
         'https://accounts.spotify.com/api/token', {
@@ -25,7 +25,5 @@ export async function fetchResults(searchWord) {
             'Authorization': 'Bearer ' + token
         },
     })
-    console.log(await trackResponse.json());
+    return await trackResponse.json();
 }
-
-fetchResults();
