@@ -1,39 +1,20 @@
-const mymap = L.map('map').setView([0, 0], 1);
 
-const marker = L.marker([0, 0]).addTo(mymap);
-
-const attribution = '&copy; <a href="https://www.openstreemap.org/copyright">OpenStreetMap </a> contrubutors';
-const tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-const tiles = L.tileLayer(tileURL, {
-    attribution
-});
-tiles.addTo(mymap)
-const url = 'https://api.wheretheiss.at/v1/satellites/25544';
-
-getdata().then(response => {
-    console.log('yay!');
-}).catch(error => {
-    console.log('error!');
-    console.error(error);
-});
-
-async function getdata() {
-    const response = await fetch(url);
-    const data = await response.json();
-
-    const {
-        latitude,
-        longitude,
-        velocity
-    } = data;
-    marker.setLatLng([latitude, longitude])
+<><><script src="./addLocationToMap.js" type="module"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+</><script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script></>
 
 
-    console.log(latitude);
-    console.log(longitude);
-    console.log(velocity);
+async function getdata(latitude,longitude) {
+    const mymap = L.map('map').setView([0, 0], 2);
 
-    document.getElementById('lat').textContent = latitude
-    document.getElementById('long').textContent = longitude
-    document.getElementById('vel').textContent = velocity
+    const marker = L.marker([0, 0]).addTo(mymap);
+
+    const attribution = '&copy; <a href="https://www.openstreemap.org/copyright">OpenStreetMap </a> contrubutors';
+    const tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    const tiles = L.tileLayer(tileURL, {
+        attribution
+    });
+    tiles.addTo(mymap);
+    marker.setLatLng([latitude, longitude]);
+    return mymap;
 }
