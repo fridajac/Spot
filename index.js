@@ -1,4 +1,5 @@
 import { fetchResults } from "./fetchTracks.js"
+import { fetchCityName } from "./fetchCityName.js"
 
 getCurrentPosition();
 
@@ -10,9 +11,7 @@ function getCurrentPosition() {
 function success(data) {
     const latitude = data.coords.latitude;
     const longitude = data.coords.longitude;
-    // const cityName = fetchCityName(latitude, longitude);
-    fetchResults(cityName);
+    const cityName = fetchCityName(latitude, longitude);
+    const listWithTracks = fetchResults(cityName);
+    console.log(listWithTracks);
 }
-
-//anropa Bennys, får tillbaka en var cityName;
-var cityName = 'Malmö';

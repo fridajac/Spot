@@ -25,7 +25,7 @@ export async function fetchResults(searchWord) {
             'Authorization': 'Bearer ' + token
         },
     })
-    console.log(await trackResponse.json());
+    return await trackResponse.json();
 }
 
 fetchResults();
