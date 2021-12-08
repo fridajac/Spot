@@ -27,5 +27,3 @@ export async function fetchResults(searchWord) {
     })
     return await trackResponse.json();
 }
-
-fetchResults();
