@@ -12,6 +12,6 @@ function success(data) {
     const latitude = data.coords.latitude;
     const longitude = data.coords.longitude;
     const cityName = fetchCityName(latitude, longitude);
-    const listWithTracks = fetchResults(cityName);
-    console.log(listWithTracks);
+    //const listWithTracks = fetchResults(cityName);
+    //console.log(listWithTracks);
 }
