@@ -2,16 +2,21 @@ import { fetchTracks } from "./fetchTracks.js"
 import { fetchCityName } from "./fetchCityName.js"
 
 const tracksTable = document.querySelector('#tracksTable');
+const searchButton = document.querySelector('#searchButton');
 
-main();
+addEventListener();
+
+function addEventListener() {
+    searchButton.addEventListener("click", main, false);
+}
 
 async function main() {
+    console.log("hej");
     const position = await getCurrentPosition();
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     const cityName = await fetchCityName(latitude, longitude);
     const tracks = await fetchTracks(cityName);
-    console.log(tracks);
     showTracksInList(tracks);
 }
 
@@ -22,22 +27,23 @@ function getCurrentPosition() {
 }
 
 function showTracksInList(tracks) {
-
-    let tr = document.createElement("tr");
-
     for (let i = 0; i < 10; i++) {
         let tr = document.createElement("tr");
+        let image = document.createElement("img");
+        image.src = tracks.tracks.items[i].album.images[0].url;
+        tr.appendChild(image);
 
+        let tdTrack = document.createElement("td");
         let tdArtist = document.createElement("td");
         let tdAlbum = document.createElement("td");
-        let tdImage = document.createElement("td");
-        tr.innerText = tracks.tracks.items[i].name;
+
+        tdTrack.innerHTML = tracks.tracks.items[i].name;
         tdArtist.innerText = tracks.tracks.items[i].album.artists[0].name;
         tdAlbum.innerHTML = tracks.tracks.items[i].album.name;
-        tdImage.innerHTML = tracks.tracks.items[i].album.images[0].url;
+
         tr.appendChild(tdArtist);
         tr.appendChild(tdAlbum);
-        tr.appendChild(tdImage);
+        tr.appendChild(tdTrack);
         tracksTable.appendChild(tr);
     }
 }
