@@ -1,7 +1,7 @@
 import { fetchTracks } from "./fetchTracks.js"
 import { fetchCityName } from "./fetchCityName.js"
 
-const trackList = document.querySelector('#trackList');
+const tracksTable = document.querySelector('#tracksTable');
 
 main();
 
@@ -23,14 +23,21 @@ function getCurrentPosition() {
 
 function showTracksInList(tracks) {
 
-    let li = document.createElement("li");
-    li.innerText = tracks.tracks.items[1].name;
-    trackList.appendChild(li);
+    let tr = document.createElement("tr");
 
     for (let i = 0; i < 10; i++) {
-        let li = document.createElement("li");
-        li.innerText = tracks.tracks.items[i].name;
-        console.log(tracks.tracks.items[i].name);
-        trackList.appendChild(li);
+        let tr = document.createElement("tr");
+
+        let tdArtist = document.createElement("td");
+        let tdAlbum = document.createElement("td");
+        let tdImage = document.createElement("td");
+        tr.innerText = tracks.tracks.items[i].name;
+        tdArtist.innerText = tracks.tracks.items[i].album.artists[0].name;
+        tdAlbum.innerHTML = tracks.tracks.items[i].album.name;
+        tdImage.innerHTML = tracks.tracks.items[i].album.images[0].url;
+        tr.appendChild(tdArtist);
+        tr.appendChild(tdAlbum);
+        tr.appendChild(tdImage);
+        tracksTable.appendChild(tr);
     }
 }
