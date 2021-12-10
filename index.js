@@ -3,6 +3,8 @@ import { fetchCityName } from "./fetchCityName.js"
 
 const tracksTable = document.querySelector('#tracksTable');
 const searchButton = document.querySelector('#searchButton');
+const musicPlayer = document.querySelector('#audio');
+const musicPlayerImage = document.querySelector('#music-player-image');
 
 addEventListener();
 
@@ -11,7 +13,6 @@ function addEventListener() {
 }
 
 async function main() {
-    console.log("hej");
     const position = await getCurrentPosition();
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -27,8 +28,12 @@ function getCurrentPosition() {
 }
 
 function showTracksInList(tracks) {
+    console.log(tracks);
+
     for (let i = 0; i < 10; i++) {
+        let url = tracks.tracks.items[i].preview_url;
         let tr = document.createElement("tr");
+
         let image = document.createElement("img");
         image.src = tracks.tracks.items[i].album.images[0].url;
         tr.appendChild(image);
@@ -41,9 +46,18 @@ function showTracksInList(tracks) {
         tdArtist.innerText = tracks.tracks.items[i].album.artists[0].name;
         tdAlbum.innerHTML = tracks.tracks.items[i].album.name;
 
+        tr.addEventListener("click", function() {
+            musicPlayerImage.setAttribute('src', image.src);
+            musicPlayer.setAttribute('src', url);
+        });
+
         tr.appendChild(tdArtist);
         tr.appendChild(tdAlbum);
         tr.appendChild(tdTrack);
         tracksTable.appendChild(tr);
+    }
+
+    function goToURL(url) {
+        window.open(url);
     }
 }
