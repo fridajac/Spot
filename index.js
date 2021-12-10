@@ -19,7 +19,7 @@ async function main() {
     const longitude = position.coords.longitude;
     const cityName = await fetchCityName(latitude, longitude);
     const tracks = await fetchTracks(cityName);
-    //add location to map
+    addLocationToMap(latitude, longitude);
     showTracksInList(tracks);
 }
 
