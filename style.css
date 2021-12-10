@@ -75,4 +75,10 @@ button:hover {
 
 table {
     padding-right: 10rem;
+    cursor: pointer;
+}
+
+#music-player-image {
+    width: 400px;
+    height: 400px;
 }
