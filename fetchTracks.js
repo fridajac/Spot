@@ -5,7 +5,7 @@ var token;
 export async function fetchTracks(searchWord) {
     var limit = 10;
 
-    const trackResponse = await fetch('https://api.spotify.com/v1/search?q=' + searchWord + '&limit=' + limit + '&type=track', {
+    var trackResponse = await fetch('https://api.spotify.com/v1/search?q=' + searchWord + '&limit=' + limit + '&type=track', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -14,8 +14,8 @@ export async function fetchTracks(searchWord) {
         },
     })
     if (trackResponse.status == 401) {
-        fetchAccessToken();
-        fetchTracks();
+        await fetchAccessToken();
+        return await fetchTracks();
     }
     return await trackResponse.json();
 }
