@@ -7,19 +7,21 @@ const searchButton = document.querySelector('#searchButton');
 const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
 
+const position = await getPosition();
+addLocationToMap(position.coords.latitude, position.coords.longitude);
 addEventListener();
 
-function addEventListener() {
-    searchButton.addEventListener("click", main, false);
+async function getPosition() {
+    return await getCurrentPosition();
 }
 
-async function main() {
-    const position = await getCurrentPosition();
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    const cityName = await fetchCityName(latitude, longitude);
+function addEventListener() {
+    searchButton.addEventListener("click", showResults, false);
+}
+
+async function showResults() {
+    const cityName = await fetchCityName(position.coords.latitude, position.coords.longitude);
     const tracks = await fetchTracks(cityName);
-    addLocationToMap(latitude, longitude);
     showTracksInList(tracks);
 }
 
