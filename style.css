@@ -2,25 +2,23 @@ body {
     font-size: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 3fr 0,5fr;
-    grid-template-areas: 
-    "header header header" 
-    "main main main"
-    "footer footer footer";
-
+    grid-template-rows: 1fr 3fr 0, 5fr;
+    grid-template-areas: "header header header" "main main main" "footer footer footer";
 }
+
 header {
     grid-area: header;
     display: grid;
-    grid-template-columns: 80% 20%; 
+    grid-template-columns: 80% 20%;
     background-color: rgb(218, 218, 228);
-    
 }
+
 header h2 {
-    background-color:#d2ced6;
+    background-color: #d2ced6;
     margin: 0%;
     text-align: right;
 }
@@ -30,14 +28,14 @@ main {
     display: grid;
     grid-template-columns: 25% 50% 25%;
     grid-template-rows: 700px;
-    background-color:white;
+    background-color: white;
     color: black;
     padding: 12px;
     gap: 10px;
 }
 
 #spotify {
-    background-color:#dcd8e2;
+    background-color: #dcd8e2;
     margin: 0%;
     text-align: center;
 }
@@ -46,4 +44,37 @@ footer {
     grid-area: footer;
     background-color: rgb(233, 221, 221);
     text-align: center;
+}
+
+img {
+    width: 70px;
+    height: 70px;
+}
+
+button {
+    background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%)
+}
+
+button {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+}
+
+button:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+table {
+    padding-right: 10rem;
 }
