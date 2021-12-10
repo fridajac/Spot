@@ -82,3 +82,8 @@ table {
     width: 400px;
     height: 350px;
 }
+
+#map {
+    height: 500px;
+    width: 500px;
+}

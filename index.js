@@ -56,8 +56,4 @@ function showTracksInList(tracks) {
         tr.appendChild(tdTrack);
         tracksTable.appendChild(tr);
     }
-
-    function goToURL(url) {
-        window.open(url);
-    }
 }
