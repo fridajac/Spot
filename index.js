@@ -28,8 +28,6 @@ function getCurrentPosition() {
 }
 
 function showTracksInList(tracks) {
-    console.log(tracks);
-
     for (let i = 0; i < 10; i++) {
         let url = tracks.tracks.items[i].preview_url;
         let tr = document.createElement("tr");
