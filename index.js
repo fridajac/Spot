@@ -1,5 +1,6 @@
-import { fetchTracks } from "./fetchTracks.js"
-import { fetchCityName } from "./fetchCityName.js"
+import { fetchTracks } from "./fetchTracks.js";
+import { fetchCityName } from "./fetchCityName.js";
+import { addLocationToMap } from "./addLocationToMap.js";
 
 const tracksTable = document.querySelector('#tracksTable');
 const searchButton = document.querySelector('#searchButton');
@@ -18,6 +19,7 @@ async function main() {
     const longitude = position.coords.longitude;
     const cityName = await fetchCityName(latitude, longitude);
     const tracks = await fetchTracks(cityName);
+    addLocationToMap(latitude, longitude);
     showTracksInList(tracks);
 }
 
@@ -53,9 +55,5 @@ function showTracksInList(tracks) {
         tr.appendChild(tdAlbum);
         tr.appendChild(tdTrack);
         tracksTable.appendChild(tr);
-    }
-
-    function goToURL(url) {
-        window.open(url);
     }
 }
