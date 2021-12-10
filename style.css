@@ -52,12 +52,10 @@ img {
 }
 
 button {
-    background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%)
-}
-
-button {
-    margin: 10px;
-    padding: 15px 45px;
+    background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%);
+    width: 10rem;
+    height: 3rem;
+    padding: 1px 10px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
