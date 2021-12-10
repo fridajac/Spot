@@ -22,6 +22,7 @@ function addEventListener() {
 async function showResults() {
     const cityName = await fetchCityName(position.coords.latitude, position.coords.longitude);
     const tracks = await fetchTracks(cityName);
+    console.log(tracks);
     showTracksInList(tracks);
 }
 
