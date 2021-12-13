@@ -17,6 +17,10 @@ export async function fetchTracks(searchWord) {
         await fetchAccessToken();
         return await fetchTracks();
     }
+
+    if (!trackResponse.ok) {
+        throw new Error();
+    }
     return await trackResponse.json();
 }
 

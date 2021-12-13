@@ -6,6 +6,7 @@ const tracksTable = document.querySelector('#tracksTable');
 const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
 const btn = document.querySelector('.button');
+const errorMessage = document.querySelector('.error-message');
 
 addEventListener();
 
@@ -23,9 +24,14 @@ async function showResults() {
     const position = await getPosition();
     addLocationToMap(position.coords.latitude, position.coords.longitude);
     const cityName = await fetchCityName(position.coords.latitude, position.coords.longitude);
-    const tracks = await fetchTracks(cityName);
-    showTracksInList(tracks);
-    btn.classList.remove('button--loading');
+    try {
+        const tracks = await fetchTracks(cityName);
+        showTracksInList(tracks);
+    } catch (Error) {
+        errorMessage.innerHTML = 'Something went wrong, try again!'
+    } finally {
+        btn.classList.remove('button--loading');
+    }
 }
 
 function getCurrentPosition() {
