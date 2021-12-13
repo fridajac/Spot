@@ -23,6 +23,10 @@
         text-align: right;
     }
     
+    .error-message {
+        color: red;
+    }
+    
     main {
         grid-area: main;
         display: grid;
