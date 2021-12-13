@@ -1,90 +1,119 @@
-body {
-    font-size: 10px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 3fr 0, 5fr;
-    grid-template-areas: "header header header" "main main main" "footer footer footer";
-}
-
-header {
-    grid-area: header;
-    display: grid;
-    grid-template-columns: 80% 20%;
-    background-color: rgb(218, 218, 228);
-}
-
-header h2 {
-    background-color: #d2ced6;
-    margin: 0%;
-    text-align: right;
-}
-
-main {
-    grid-area: main;
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-    grid-template-rows: 700px;
-    background-color: white;
-    color: black;
-    padding: 12px;
-    gap: 10px;
-}
-
-#spotify {
-    background-color: #dcd8e2;
-    margin: 0%;
-    text-align: center;
-}
-
-footer {
-    grid-area: footer;
-    background-color: rgb(233, 221, 221);
-    text-align: center;
-}
-
-img {
-    width: 70px;
-    height: 70px;
-}
-
-button {
-    background-image: linear-gradient(to right, #1A2980 0%, #26D0CE 51%, #1A2980 100%);
-    width: 10rem;
-    height: 3rem;
-    padding: 1px 10px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
-    display: block;
-}
-
-button:hover {
-    background-position: right center;
-    /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-}
-
-table {
-    padding-right: 10rem;
-    cursor: pointer;
-}
-
-#music-player-image {
-    width: 400px;
-    height: 350px;
-}
-
-#map {
-    height: 400px;
-    width: 400px;
-    background-color: grey;
-}
+    body {
+        font-size: 10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 3fr 0, 5fr;
+        grid-template-areas: "header header header" "main main main" "footer footer footer";
+    }
+    
+    header {
+        grid-area: header;
+        display: grid;
+        grid-template-columns: 80% 20%;
+        background-color: rgb(218, 218, 228);
+    }
+    
+    header h2 {
+        background-color: #d2ced6;
+        margin: 0%;
+        text-align: right;
+    }
+    
+    main {
+        grid-area: main;
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+        grid-template-rows: 700px;
+        background-color: white;
+        color: black;
+        padding: 12px;
+        gap: 10px;
+    }
+    
+    #spotify {
+        background-color: #dcd8e2;
+        margin: 0%;
+        text-align: center;
+    }
+    
+    footer {
+        grid-area: footer;
+        background-color: rgb(233, 221, 221);
+        text-align: center;
+    }
+    
+    img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .button {
+        background-color: #009579;
+        width: 15rem;
+        height: 3rem;
+        position: relative;
+        padding: 8px 16px;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+    }
+    
+    .button:active {
+        background-color: #007a63;
+    }
+    
+    .button-text {
+        transition: all 0.s;
+        color: white;
+        font: bold 20px;
+    }
+    
+    .button--loading .button-text {
+        visibility: hidden;
+        opacity: 0;
+    }
+    
+    .button--loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: white;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+    }
+    
+    @keyframes button-loading-spinner {
+        from {
+            transform: rotate(0turn);
+        }
+        to {
+            transform: rotate(1turn);
+        }
+    }
+    
+    table {
+        padding-right: 10rem;
+        cursor: pointer;
+    }
+    
+    #music-player-image {
+        width: 400px;
+        height: 350px;
+    }
+    
+    #map {
+        height: 400px;
+        width: 400px;
+        background-color: grey;
+    }

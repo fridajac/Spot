@@ -3,12 +3,10 @@ import { fetchCityName } from "./fetchCityName.js";
 import { addLocationToMap } from "./addLocationToMap.js";
 
 const tracksTable = document.querySelector('#tracksTable');
-const searchButton = document.querySelector('#searchButton');
 const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
+const btn = document.querySelector('.button');
 
-const position = await getPosition();
-addLocationToMap(position.coords.latitude, position.coords.longitude);
 addEventListener();
 
 async function getPosition() {
@@ -16,14 +14,18 @@ async function getPosition() {
 }
 
 function addEventListener() {
-    searchButton.addEventListener("click", showResults, false);
+    btn.addEventListener("click", showResults, false);
+
 }
 
 async function showResults() {
+    btn.classList.add('button--loading');
+    const position = await getPosition();
+    addLocationToMap(position.coords.latitude, position.coords.longitude);
     const cityName = await fetchCityName(position.coords.latitude, position.coords.longitude);
     const tracks = await fetchTracks(cityName);
-    console.log(tracks);
     showTracksInList(tracks);
+    btn.classList.remove('button--loading');
 }
 
 function getCurrentPosition() {

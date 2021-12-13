@@ -1,4 +1,4 @@
-import { OAuthToken, clientSecret, clientID } from "./spotifyPasswordAndKeys.js";
+import { clientSecret, clientID } from "./spotifyPasswordAndKeys.js";
 
 var token;
 
