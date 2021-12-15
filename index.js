@@ -48,9 +48,8 @@ function getCurrentPosition() {
 }
 
 function showTracksInList(tracks) {
-    console.log(tracksTable.rows.length);
-    for (var i = 1; i < tracksTable.rows.length; i++) {
-        tracksTable.deleteRow(i);
+    while (tracksTable.hasChildNodes()) {
+        tracksTable.removeChild(tracksTable.firstChild);
     }
     for (let i = 0; i < 10; i++) {
         let url = tracks.tracks.items[i].preview_url;
