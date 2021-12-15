@@ -7,6 +7,7 @@ const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
 const btn = document.querySelector('.button');
 const errorMessage = document.querySelector('.error-message');
+const input = document.getElementById('city');
 
 addEventListener();
 
@@ -16,7 +17,6 @@ async function getPosition() {
 
 function addEventListener() {
     btn.addEventListener("click", showResults, false);
-
 }
 
 async function showResults() {
