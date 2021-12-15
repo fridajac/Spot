@@ -7,7 +7,7 @@ const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
 const btn = document.querySelector('.button');
 const errorMessage = document.querySelector('.error-message');
-const input = document.getElementById('city');
+const textBox = document.getElementById('city');
 
 addEventListener();
 
@@ -17,6 +17,11 @@ async function getPosition() {
 
 function addEventListener() {
     btn.addEventListener("click", showResults, false);
+    textBox.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            console.log(textBox.value);
+        }
+    });
 }
 
 async function showResults() {
