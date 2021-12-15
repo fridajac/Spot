@@ -17,18 +17,12 @@ async function getPosition() {
 
 function addEventListener() {
     btn.addEventListener("click", showResults, false);
-    textBox.addEventListener("keyup", function(event) {
+    textBox.addEventListener("keyup", async function(event) {
         if (event.keyCode === 13) {
-            //getTracksFromSpotify(textBox.value)
-            console.log(textBox.value);
+            const tracks = await fetchTracks(textBox.value.toString());
+            showTracksInList(tracks);
         }
     });
-}
-
-async function getTracksFromSpotify(cityName) {
-    console.log(cityName);
-    const tracks = await fetchTracks(cityName);
-    showTracksInList(tracks);
 }
 
 async function showResults() {
@@ -46,6 +40,7 @@ async function showResults() {
     }
 }
 
+
 function getCurrentPosition() {
     return new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -55,7 +50,7 @@ function getCurrentPosition() {
 function showTracksInList(tracks) {
     console.log(tracksTable.rows.length);
     for (var i = 1; i < tracksTable.rows.length; i++) {
-        tracksTable.deleteRow(tableHeaderRowCount);
+        tracksTable.deleteRow(i);
     }
     for (let i = 0; i < 10; i++) {
         let url = tracks.tracks.items[i].preview_url;
