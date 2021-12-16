@@ -9,6 +9,7 @@ const btnPosition = document.querySelector('.button-position');
 const btnCity = document.querySelector('.button-search');
 const textBox = document.getElementById('city-input');
 const errorMessage = document.querySelector('.error-message');
+const searchIcon = document.querySelector('.search-icon');
 
 addEventListeners();
 
@@ -17,9 +18,20 @@ async function getPosition() {
 }
 
 function addEventListeners() {
+    searchIcon.addEventListener("click", showSearchField, false)
     btnPosition.addEventListener("click", getTracksFromPosition, false);
     btnCity.addEventListener("click", getTracksFromCity, false);
 
+}
+
+function showSearchField() {
+    if (textBox.style.display === "none") {
+        textBox.style.display = "block";
+        btnCity.style.display = "block";
+    } else {
+        textBox.style.display = "none";
+        btnCity.style.display = "none";
+    }
 }
 
 async function getTracksFromCity() {
