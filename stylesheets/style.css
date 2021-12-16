@@ -55,15 +55,18 @@
         height: 70px;
     }
     
-    .button-position {
+    button {
         background-color: #009579;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+    }
+    
+    .button-position {
         width: 15rem;
         height: 3rem;
         position: relative;
         padding: 8px 16px;
-        border: none;
-        outline: none;
-        border-radius: 3px;
     }
     
     .button:active {
