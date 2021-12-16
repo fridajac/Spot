@@ -106,6 +106,10 @@
     
     #city-input {
         display: none;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        outline: none;
     }
     
     @keyframes button-loading-spinner {
