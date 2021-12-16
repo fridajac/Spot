@@ -5,7 +5,7 @@ import { addLocationToMap } from "./addLocationToMap.js";
 const tracksTable = document.querySelector('#tracksTable');
 const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
-const btn = document.querySelector('.button');
+const btn = document.querySelector('.button-position');
 const errorMessage = document.querySelector('.error-message');
 
 addEventListener();
