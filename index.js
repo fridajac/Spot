@@ -5,7 +5,8 @@ import { addLocationToMap } from "./addLocationToMap.js";
 const tracksTable = document.querySelector('#tracksTable');
 const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
-const btn = document.querySelector('.button-position');
+const btnPosition = document.querySelector('.button-position');
+const btnCity = document.querySelector('.button-search');
 const errorMessage = document.querySelector('.error-message');
 
 addEventListener();
@@ -15,12 +16,18 @@ async function getPosition() {
 }
 
 function addEventListener() {
-    btn.addEventListener("click", showResults, false);
+    btnPosition.addEventListener("click", getTracksFromPosition, false);
+    btnCity.addEventListener("click", getTracksFromCity, false);
 
 }
 
-async function showResults() {
-    btn.classList.add('button--loading');
+async function getTracksFromCity() {
+    console.log('hello');
+
+}
+
+async function getTracksFromPosition() {
+    btnPosition.classList.add('button--loading');
     const position = await getPosition();
     addLocationToMap(position.coords.latitude, position.coords.longitude);
     const cityName = await fetchCityName(position.coords.latitude, position.coords.longitude);
@@ -30,7 +37,7 @@ async function showResults() {
     } catch (Error) {
         errorMessage.innerHTML = 'Something went wrong, try again!'
     } finally {
-        btn.classList.remove('button--loading');
+        btnPosition.classList.remove('button--loading');
     }
 }
 
