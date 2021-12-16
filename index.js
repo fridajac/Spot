@@ -7,23 +7,26 @@ const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
 const btnPosition = document.querySelector('.button-position');
 const btnCity = document.querySelector('.button-search');
+const textBox = document.getElementById('city-input');
 const errorMessage = document.querySelector('.error-message');
 
-addEventListener();
+addEventListeners();
 
 async function getPosition() {
     return await getCurrentPosition();
 }
 
-function addEventListener() {
+function addEventListeners() {
     btnPosition.addEventListener("click", getTracksFromPosition, false);
     btnCity.addEventListener("click", getTracksFromCity, false);
 
 }
 
 async function getTracksFromCity() {
-    console.log('hello');
-
+    let input = textBox.value.toString();
+    const tracks = await fetchTracks(input);
+    console.log(textBox.value.toString());
+    //showTracksInList(tracks);
 }
 
 async function getTracksFromPosition() {
@@ -48,6 +51,9 @@ function getCurrentPosition() {
 }
 
 function showTracksInList(tracks) {
+    while (tracksTable.hasChildNodes()) {
+        tracksTable.removeChild(tracksTable.firstChild);
+    }
     for (let i = 0; i < 10; i++) {
         let url = tracks.tracks.items[i].preview_url;
         let tr = document.createElement("tr");
