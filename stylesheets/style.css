@@ -59,13 +59,13 @@
         background-color: #009579;
         border: none;
         outline: none;
+        position: relative;
         border-radius: 3px;
     }
     
     .button-position {
         width: 15rem;
         height: 3rem;
-        position: relative;
         padding: 8px 16px;
     }
     

@@ -23,10 +23,12 @@ function addEventListeners() {
 }
 
 async function getTracksFromCity() {
+    btnCity.classList.add('button--loading');
     let input = textBox.value.toString();
     const tracks = await fetchTracks(input);
     console.log(textBox.value.toString());
     displayTracksInList(tracks);
+    btnCity.classList.remove('button--loading');
 }
 
 async function getTracksFromPosition() {
