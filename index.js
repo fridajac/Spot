@@ -26,7 +26,7 @@ async function getTracksFromCity() {
     let input = textBox.value.toString();
     const tracks = await fetchTracks(input);
     console.log(textBox.value.toString());
-    //showTracksInList(tracks);
+    displayTracksInList(tracks);
 }
 
 async function getTracksFromPosition() {
@@ -36,7 +36,7 @@ async function getTracksFromPosition() {
     const cityName = await fetchCityName(position.coords.latitude, position.coords.longitude);
     try {
         const tracks = await fetchTracks(cityName);
-        showTracksInList(tracks);
+        displayTracksInList(tracks);
     } catch (Error) {
         errorMessage.innerHTML = 'Something went wrong, try again!'
     } finally {
@@ -50,7 +50,7 @@ function getCurrentPosition() {
     });
 }
 
-function showTracksInList(tracks) {
+function displayTracksInList(tracks) {
     while (tracksTable.hasChildNodes()) {
         tracksTable.removeChild(tracksTable.firstChild);
     }
