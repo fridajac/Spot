@@ -10,6 +10,7 @@ const textBox = document.getElementById('city-input');
 const errorMessage = document.querySelector('.error-message');
 const searchIcon = document.querySelector('.search-icon');
 const loadingBar = document.getElementsByClassName('input-field-loader');
+console.dir(loadingBar.item);
 addEventListeners();
 
 async function getPosition() {
@@ -27,21 +28,15 @@ function addEventListeners() {
 }
 
 function showSearchField() {
-    if (textBox.style.display === "none") {
-        textBox.style.display = "block";
-    } else {
-        textBox.style.display = "none";
-    }
+    textBox.style.display = "block";
+    searchIcon.addEventListener("click", getTracksFromCity, false);
 }
 
 async function getTracksFromCity() {
-    console.log(loadingBar);
-    loadingBar.style.display = 'block';
     let input = textBox.value.toString();
     const tracks = await fetchTracks(input);
-    console.log(textBox.value.toString());
     displayTracksInList(tracks);
-    loadingBar.style.display == 'block';
+
 }
 
 async function getTracksFromPosition() {
