@@ -61,6 +61,7 @@ function getCurrentPosition() {
 }
 
 function displayTracksInList(tracks) {
+    errorMessage.innerHTML = '';
     if (tracks.tracks.items[0] == undefined) {
         errorMessage.innerHTML = 'No results';
         return;
