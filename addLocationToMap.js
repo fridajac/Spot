@@ -1,5 +1,8 @@
+const mymap = L.map('map');
+
 export async function addLocationToMap(latitude, longitude) {
-    const mymap = L.map('map').setView([latitude, longitude], 10);
+
+    mymap.setView([latitude, longitude], 10);
 
     const marker = L.marker([0, 0]).addTo(mymap);
 
