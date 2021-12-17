@@ -9,21 +9,24 @@ const btnPosition = document.querySelector('.button-position');
 const textBox = document.getElementById('city-input');
 const errorMessage = document.querySelector('.error-message');
 const searchIcon = document.querySelector('.search-icon');
-const loadingBar = document.getElementsByClassName('input-field-loader');
+const loadingBar = document.querySelector('.input-field-loader');
+const btnSpotify = document.querySelector('.button-spotify');
+let currentTrackURL = null;
 addEventListeners();
 
-async function getPosition() {
-    return await getCurrentPosition();
-}
-
 function addEventListeners() {
-    searchIcon.addEventListener("click", showSearchField, false)
-    btnPosition.addEventListener("click", getTracksFromPosition, false);
-    textBox.addEventListener("keydown", function(event) {
+    btnSpotify.addEventListener('click', openInSpotify, false);
+    searchIcon.addEventListener('click', showSearchField, false)
+    btnPosition.addEventListener('click', getTracksFromPosition, false);
+    textBox.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             getTracksFromCity();
         }
     });
+}
+
+async function getPosition() {
+    return await getCurrentPosition();
 }
 
 function showSearchField() {
@@ -32,7 +35,7 @@ function showSearchField() {
 }
 
 async function getTracksFromCity() {
-    loadingBar[0].style.display = 'block';
+    loadingBar.style.display = 'block';
     let input = textBox.value.toString();
     const tracks = await fetchTracks(input);
     displayTracksInList(tracks);
@@ -88,6 +91,7 @@ function displayTracksInList(tracks) {
         tr.addEventListener("click", function() {
             musicPlayerImage.setAttribute('src', image.src);
             musicPlayer.setAttribute('src', url);
+            currentTrackURL = tracks.tracks.items[i].external_urls.spotify.toString();
         });
 
         tr.appendChild(tdArtist);
@@ -95,4 +99,9 @@ function displayTracksInList(tracks) {
         tr.appendChild(tdTrack);
         tracksTable.appendChild(tr);
     }
+}
+
+function openInSpotify() {
+    musicPlayer.src = '';
+    if (currentTrackURL != null) window.open(currentTrackURL);
 }
