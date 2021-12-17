@@ -39,7 +39,7 @@ async function getTracksFromCity() {
     let input = textBox.value.toString();
     const tracks = await fetchTracks(input);
     displayTracksInList(tracks);
-    loadingBar[0].style.display = 'none';
+    loadingBar.style.display = 'none';
 }
 
 async function getTracksFromPosition() {
