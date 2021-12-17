@@ -3,6 +3,7 @@ import { clientSecret, clientID } from "./spotifyPasswordAndKeys.js";
 var token;
 
 export async function fetchTracks(searchWord) {
+    var q = searchWord;
     var limit = 10;
 
     var trackResponse = await fetch('https://api.spotify.com/v1/search?q=' + searchWord + '&limit=' + limit + '&type=track', {
@@ -15,7 +16,7 @@ export async function fetchTracks(searchWord) {
     })
     if (trackResponse.status == 401) {
         await fetchAccessToken();
-        return await fetchTracks();
+        return await fetchTracks(q);
     }
 
     if (!trackResponse.ok) {

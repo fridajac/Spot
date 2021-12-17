@@ -5,32 +5,54 @@ import { addLocationToMap } from "./addLocationToMap.js";
 const tracksTable = document.querySelector('#tracksTable');
 const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
-const btn = document.querySelector('.button');
+const btnPosition = document.querySelector('.button-position');
+const btnCity = document.querySelector('.button-search');
+const textBox = document.getElementById('city-input');
 const errorMessage = document.querySelector('.error-message');
+const searchIcon = document.querySelector('.search-icon');
 
-addEventListener();
+addEventListeners();
 
 async function getPosition() {
     return await getCurrentPosition();
 }
 
-function addEventListener() {
-    btn.addEventListener("click", showResults, false);
+function addEventListeners() {
+    searchIcon.addEventListener("click", showSearchField, false)
+    btnPosition.addEventListener("click", getTracksFromPosition, false);
+    btnCity.addEventListener("click", getTracksFromCity, false);
 
 }
 
-async function showResults() {
-    btn.classList.add('button--loading');
+function showSearchField() {
+    if (textBox.style.display === "none") {
+        textBox.style.display = "block";
+        btnCity.style.display = "block";
+    } else {
+        textBox.style.display = "none";
+        btnCity.style.display = "none";
+    }
+}
+
+async function getTracksFromCity() {
+    let input = textBox.value.toString();
+    const tracks = await fetchTracks(input);
+    console.log(textBox.value.toString());
+    displayTracksInList(tracks);
+}
+
+async function getTracksFromPosition() {
+    btnPosition.classList.add('button--loading');
     const position = await getPosition();
     addLocationToMap(position.coords.latitude, position.coords.longitude);
     const cityName = await fetchCityName(position.coords.latitude, position.coords.longitude);
     try {
         const tracks = await fetchTracks(cityName);
-        showTracksInList(tracks);
+        displayTracksInList(tracks);
     } catch (Error) {
         errorMessage.innerHTML = 'Something went wrong, try again!'
     } finally {
-        btn.classList.remove('button--loading');
+        btnPosition.classList.remove('button--loading');
     }
 }
 
@@ -40,7 +62,10 @@ function getCurrentPosition() {
     });
 }
 
-function showTracksInList(tracks) {
+function displayTracksInList(tracks) {
+    while (tracksTable.hasChildNodes()) {
+        tracksTable.removeChild(tracksTable.firstChild);
+    }
     for (let i = 0; i < 10; i++) {
         let url = tracks.tracks.items[i].preview_url;
         let tr = document.createElement("tr");
