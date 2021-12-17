@@ -10,7 +10,6 @@ const textBox = document.getElementById('city-input');
 const errorMessage = document.querySelector('.error-message');
 const searchIcon = document.querySelector('.search-icon');
 const loadingBar = document.getElementsByClassName('input-field-loader');
-console.dir(loadingBar.item);
 addEventListeners();
 
 async function getPosition() {
@@ -33,10 +32,11 @@ function showSearchField() {
 }
 
 async function getTracksFromCity() {
+    loadingBar[0].style.display = 'block';
     let input = textBox.value.toString();
     const tracks = await fetchTracks(input);
     displayTracksInList(tracks);
-
+    loadingBar[0].style.display = 'none';
 }
 
 async function getTracksFromPosition() {
