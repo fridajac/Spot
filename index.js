@@ -61,6 +61,10 @@ function getCurrentPosition() {
 }
 
 function displayTracksInList(tracks) {
+    if (tracks.tracks.items[0] == undefined) {
+        errorMessage.innerHTML = 'No results';
+        return;
+    }
     while (tracksTable.hasChildNodes()) {
         tracksTable.removeChild(tracksTable.firstChild);
     }
