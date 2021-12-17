@@ -100,10 +100,6 @@
         animation: button-loading-spinner 1s ease infinite;
     }
     
-    .button-search {
-        display: none;
-    }
-    
     #city-input {
         display: none;
         border-top: none;
@@ -140,4 +136,5 @@
     .search-icon {
         width: 40px;
         height: 40px;
+        cursor: pointer;
     }

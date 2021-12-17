@@ -6,11 +6,9 @@ const tracksTable = document.querySelector('#tracksTable');
 const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
 const btnPosition = document.querySelector('.button-position');
-const btnCity = document.querySelector('.button-search');
 const textBox = document.getElementById('city-input');
 const errorMessage = document.querySelector('.error-message');
 const searchIcon = document.querySelector('.search-icon');
-
 addEventListeners();
 
 async function getPosition() {
@@ -20,17 +18,18 @@ async function getPosition() {
 function addEventListeners() {
     searchIcon.addEventListener("click", showSearchField, false)
     btnPosition.addEventListener("click", getTracksFromPosition, false);
-    btnCity.addEventListener("click", getTracksFromCity, false);
-
+    textBox.addEventListener("keydown", function(event) {
+        if (event.key === 'Enter') {
+            getTracksFromCity(textBox.value.toString());
+        }
+    });
 }
 
 function showSearchField() {
     if (textBox.style.display === "none") {
         textBox.style.display = "block";
-        btnCity.style.display = "block";
     } else {
         textBox.style.display = "none";
-        btnCity.style.display = "none";
     }
 }
 
