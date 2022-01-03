@@ -7,7 +7,6 @@ const musicPlayer = document.querySelector('#audio');
 const musicPlayerImage = document.querySelector('#music-player-image');
 const btnPosition = document.querySelector('.button-position');
 const textBox = document.getElementById('city-input');
-const errorMessage = document.querySelector('.error-message');
 const searchIcon = document.querySelector('.search-icon');
 const loadingBar = document.getElementsByClassName('input-field-loader');
 addEventListeners();
@@ -48,7 +47,7 @@ async function getTracksFromPosition() {
         const tracks = await fetchTracks(cityName);
         displayTracksInList(tracks);
     } catch (Error) {
-        errorMessage.innerHTML = 'Something went wrong, try again!'
+        alert('Something went wrong, try again!');
     } finally {
         btnPosition.classList.remove('button--loading');
     }
