@@ -146,6 +146,7 @@ img {
     border-right: none;
     border-left: none;
     outline: none;
+    background-color: transparent;
 }
 
 @keyframes button-loading-spinner {
