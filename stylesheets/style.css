@@ -1,159 +1,196 @@
-    body {
-        font-size: 10px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+body {
+    min-height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "header header header" "article article figure" "main main figure" "ul ul ul" "footer footer footer";
+    background-color: #D5F2E2;
+}
+
+#bild {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+header {
+    grid-area: header;
+    margin: 0%;
+    padding: 0%;
+    color: white;
+    position: relative;
+}
+
+article {
+    grid-area: article;
+    text-align: center;
+    height: 10vh;
+    padding-left: 50%;
+    padding-bottom: 15%;
+    color: white;
+    font-size: 150%;
+    position: relative;
+}
+
+figure {
+    grid-area: figure;
+    display: grid;
+    padding-bottom: 57%;
+    padding-left: 10%;
+}
+
+.error-message {
+    color: red;
+}
+
+main {
+    grid-area: main;
+    display: grid;
+    margin-left: 49%;
+    margin-bottom: 10%;
+    position: relative;
+}
+
+.music-player {
+    grid-area: b;
+    display: grid;
+}
+
+#audio {
+    margin-top: 3%;
+    margin-left: 19%;
+}
+
+.map-section {
+    grid-area: figure;
+    display: grid;
+}
+
+ul {
+    grid-area: ul;
+    background-color: #D5F2E2;
+}
+
+footer {
+    grid-area: footer;
+    text-align: center;
+}
+
+#map {
+    height: 30vh;
+    margin-top: 20%;
+}
+
+#music-player-image {
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    width: 100px;
+    height: 70px;
+}
+
+.button-position {
+    background-color: #F55184;
+    color: white;
+    width: 15rem;
+    height: 3rem;
+    position: relative;
+    padding: 8px 16px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    margin-bottom: 50%;
+}
+
+.button:active {
+    background-color: #4734EB;
+}
+
+.button-text {
+    transition: all 0.s;
+    color: white;
+    font: bold 20px;
+}
+
+.button--loading .button-text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.button--loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+#city-input {
+    display: none;
+    color: white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+    background-color: transparent;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
     }
-    
-    .wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 3fr 0, 5fr;
-        grid-template-areas: "header header header" "main main main" "footer footer footer";
+    to {
+        transform: rotate(1turn);
     }
-    
-    header {
-        grid-area: header;
-        display: grid;
-        grid-template-columns: 80% 20%;
-        background-color: rgb(218, 218, 228);
+}
+
+table {
+    padding-right: 10rem;
+    cursor: pointer;
+}
+
+#music-player-image {
+    width: 400px;
+    height: 350px;
+}
+
+.search-icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+}
+
+.input-field-loader {
+    width: 16px;
+    height: 16px;
+    border: 4px solid transparent;
+    border-top-color: rgb(20, 18, 18);
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
-    
-    header h2 {
-        background-color: #d2ced6;
-        margin: 0%;
-        text-align: right;
+    100% {
+        transform: rotate(360deg);
     }
-    
-    .error-message {
-        color: red;
-    }
-    
-    main {
-        grid-area: main;
-        display: grid;
-        grid-template-columns: 25% 50% 25%;
-        grid-template-rows: 700px;
-        background-color: white;
-        color: black;
-        padding: 12px;
-        gap: 10px;
-    }
-    
-    #spotify {
-        background-color: #dcd8e2;
-        margin: 0%;
-        text-align: center;
-    }
-    
-    footer {
-        grid-area: footer;
-        background-color: rgb(233, 221, 221);
-        text-align: center;
-    }
-    
-    img {
-        width: 70px;
-        height: 70px;
-    }
-    
-    button {
-        background-color: #009579;
-        border: none;
-        outline: none;
-        border-radius: 3px;
-    }
-    
-    .button-position {
-        width: 15rem;
-        height: 3rem;
-        position: relative;
-        padding: 8px 16px;
-    }
-    
-    .button:active {
-        background-color: #007a63;
-    }
-    
-    .button-text {
-        transition: all 0.s;
-        color: white;
-        font: bold 20px;
-    }
-    
-    .button--loading .button-text {
-        visibility: hidden;
-        opacity: 0;
-    }
-    
-    .button--loading::after {
-        content: "";
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        border: 4px solid transparent;
-        border-top-color: white;
-        border-radius: 50%;
-        animation: button-loading-spinner 1s ease infinite;
-    }
-    
-    #city-input {
-        display: none;
-        border-top: none;
-        border-right: none;
-        border-left: none;
-        outline: none;
-    }
-    
-    @keyframes button-loading-spinner {
-        from {
-            transform: rotate(0turn);
-        }
-        to {
-            transform: rotate(1turn);
-        }
-    }
-    
-    table {
-        padding-right: 10rem;
-        cursor: pointer;
-    }
-    
-    #music-player-image {
-        width: 400px;
-        height: 350px;
-    }
-    
-    #map {
-        height: 400px;
-        width: 400px;
-        background-color: grey;
-    }
-    
-    .search-icon {
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-    }
-    
-    .input-field-loader {
-        width: 16px;
-        height: 16px;
-        border: 4px solid transparent;
-        border-top-color: rgb(20, 18, 18);
-        border-radius: 50%;
-        animation: button-loading-spinner 1s ease infinite;
-        display: none;
-    }
-    
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
+}

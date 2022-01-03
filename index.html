@@ -15,32 +15,33 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="./index.js" type="module"></script>
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>SPOT</title>
 </head>
 
 <body>
     <div class="wrapper">
+        <img id="bild" src="images/picture.jpeg">
         <header>
-            <h1>SPOT</h1>
-            <h2>logga ut</h2>
-            <button type='button' class="button-position">
-                <span class="button-text">Find my position</span>
-            </button>
-            <p class='error-message'></p>
+            <h1>Spot</h1>
         </header>
+
+        <article>
+            <p>Hitta musik baserat på var du befinner dig och upptäck låtar du aldrig hört förut!</p>
+            <img src="images/magnifying-glass-3-512.png" class='search-icon' alt="Search for city">
+            <input type="text" id="city-input" name="city" placeholder="enter city here" autocomplete="off">
+            <div class="input-field-loader"></div>
+        </article>
+        <figure>
+            <section class="map-section">
+                <button type='button' class="button-position"></button>
+                <span class="button-text">Hitta position</span>
+                <div id="map"></div>
+                <p class='error-message'></p>
+            </section>
+        </figure>
         <main>
-            <section>
-                <div id="map">Karta</div>
-                <img src="images/magnifying-glass-icon.png" class='search-icon' alt="Search for city">
-                <input type="text" id="city-input" name="city" placeholder="enter city here" vi>
-                <div class="input-field-loader"></div>
-            </section>
-            <h1> </h1>
-            <section id="spotify">
-                <table id="tracksTable"></table>
-            </section>
             <section id="music-player">
                 <img id="music-player-image" src="images/logo_large.jpg" alt="Image of track" width="600" height="600">
                 <audio id="audio" controls autoplay>
@@ -48,26 +49,14 @@
                   Your browser does not support the audio element.
                   </audio>
             </section>
-            <nav class="meny">
-                <a href="#">Konto</a>
-                <br>
-                <a href="#">Senast spelade låtar</a>
-            </nav>
         </main>
+        </figure>
+        <ul>
+            <table id="tracksTable"></table>
+        </ul>
         <footer>
-            <p>footer</p>
         </footer>
     </div>
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>
