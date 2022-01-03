@@ -1,110 +1,76 @@
-body {
-    min-height: 100%;
-    text-decoration: font-family: 'Montserrat', sans-serif;
-}  
+    body {
+        font-size: 10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
     .wrapper {
-        min-height: 100vh;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: auto 1fr auto;
-        grid-template-areas: 
-        "header header header" 
-        "article article figure"
-        "main main figure" 
-        "ul ul ul"
-        "footer footer footer";
-        background-color: #D5F2E2;
-    }
-
-    #bild {
-        width: 100%;
-        height: 100%;
-        position: absolute; 
+        grid-template-rows: 1fr 3fr 0, 5fr;
+        grid-template-areas: "header header header" "main main main" "footer footer footer";
     }
     
     header {
         grid-area: header;
-        margin: 0%;
-        padding: 0%;
-        color: white;
-        position: relative;
-    }
-    article {
-        grid-area: article;
-        text-align: center;
-        height: 10vh;
-        padding-left: 50%;
-        padding-bottom: 15%;
-        color: white;
-        font-size: 150%;
-        position: relative;
-
-    }
-    figure {
-        grid-area: figure;
         display: grid;
-        padding-bottom: 57%;
-        padding-left: 10%;
+        grid-template-columns: 80% 20%;
+        background-color: rgb(218, 218, 228);
     }
+    
+    header h2 {
+        background-color: #d2ced6;
+        margin: 0%;
+        text-align: right;
+    }
+    
+    .error-message {
+        color: red;
+    }
+    
     main {
         grid-area: main;
         display: grid;
-        margin-left: 49%;
-        margin-bottom: 10%;
-        position: relative;
-
+        grid-template-columns: 25% 50% 25%;
+        grid-template-rows: 700px;
+        background-color: white;
+        color: black;
+        padding: 12px;
+        gap: 10px;
     }
-    .music-player {
-        grid-area: b;
-        display: grid;
-    }
-    #audio {
-        margin-top: 3%;
-        margin-left: 19%;
-    }
-    .map-section {
-        grid-area: figure;
-        display: grid;
-        
-    }
-    ul {
-        grid-area: ul;
-        background-color:#D5F2E2;
-
-    }
-   
-    footer {
-        grid-area: footer;
+    
+    #spotify {
+        background-color: #dcd8e2;
+        margin: 0%;
         text-align: center;
     }
-    #map {
-        height: 30vh;
-        margin-top: 20%;
+    
+    footer {
+        grid-area: footer;
+        background-color: rgb(233, 221, 221);
+        text-align: center;
     }
-    #music-player-image {
-        width: 100%;
-        height: 100%;
-    }
+    
     img {
-        width: 100px;
+        width: 70px;
         height: 70px;
-    } 
-    .button {
-        background-color: #F55184;
+    }
+    
+    button {
+        background-color: #009579;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+    }
+    
+    .button-position {
         width: 15rem;
         height: 3rem;
         position: relative;
         padding: 8px 16px;
-        border: none;
-        outline: none;
-        border-radius: 3px;
-        margin-bottom: 50%;
-       
-
     }
     
     .button:active {
-        background-color:#4734EB;
+        background-color: #007a63;
     }
     
     .button-text {
@@ -118,7 +84,7 @@ body {
         opacity: 0;
     }
     
-   /* .button--loading::after {
+    .button--loading::after {
         content: "";
         position: absolute;
         width: 16px;
@@ -131,7 +97,7 @@ body {
         border: 4px solid transparent;
         border-top-color: white;
         border-radius: 50%;
-        animation: button-loading-spinner 1s ease infinite; 
+        animation: button-loading-spinner 1s ease infinite;
     }
     
     #city-input {
@@ -151,8 +117,12 @@ body {
         }
     }
     
+    table {
+        padding-right: 10rem;
+        cursor: pointer;
+    }
     
-   /* #music-player-image {
+    #music-player-image {
         width: 400px;
         height: 350px;
     }
@@ -187,4 +157,3 @@ body {
             transform: rotate(360deg);
         }
     }
-   */ 
