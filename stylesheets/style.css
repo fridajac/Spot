@@ -146,7 +146,6 @@ img {
     border-right: none;
     border-left: none;
     outline: none;
-    background-color: transparent;
 }
 
 @keyframes button-loading-spinner {
@@ -169,9 +168,10 @@ table {
 }
 
 .search-icon {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    color: white;
 }
 
 .input-field-loader {
