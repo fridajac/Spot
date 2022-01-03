@@ -52,6 +52,10 @@ main {
     position: relative;
 }
 
+#welcome-text {
+    font-size: 22px
+}
+
 .music-player {
     grid-area: b;
     display: grid;
