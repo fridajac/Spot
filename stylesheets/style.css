@@ -96,15 +96,9 @@ img {
     height: 70px;
 }
 
-button {
-    background-color: #009579;
-    border: none;
-    outline: none;
-    border-radius: 3px;
-}
-
 .button-position {
     background-color: #F55184;
+    color: white;
     width: 15rem;
     height: 3rem;
     position: relative;
