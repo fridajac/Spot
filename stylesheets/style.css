@@ -1,7 +1,8 @@
 body {
+    background-image: url('../images/picture.jpeg');
     min-height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background-image: url('../images/picture.jpeg');
+    
 }
 
 .wrapper {
@@ -15,6 +16,7 @@ body {
     "main main figure" 
     "ul ul ul"
     "footer footer footer";
+    background-color: #D5F2E2;
 }
 
 header {
@@ -101,7 +103,7 @@ footer {
     width: 35vh;
     height: 35vh;
     margin-top: 5%;
-    background:none;
+    background:none
 }
  
 #music-player-image {
