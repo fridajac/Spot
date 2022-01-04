@@ -1,6 +1,7 @@
 body {
     min-height: 100%;
     font-family: 'Montserrat', sans-serif;
+    background-image: url('../images/picture.jpeg');
 }
 
 .wrapper {
@@ -8,14 +9,12 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto 1fr auto;
-    grid-template-areas: "header header header" "article article figure" "main main figure" "ul ul ul" "footer footer footer";
-    background-color: #D5F2E2;
-}
-
-#bild {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+    grid-template-areas: 
+    "header header header" 
+    "article article figure" 
+    "main main figure" 
+    "ul ul ul"
+    "footer footer footer";
 }
 
 header {
@@ -24,6 +23,24 @@ header {
     padding: 0%;
     color: white;
     position: relative;
+}
+#bild {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+::placeholder {
+    color:#EBF0FF;
+}
+#batman {
+    float: right;
+    margin-right: 7%;
+}
+#batman input {
+    display: inline-block;
+}
+.input-field-loader {
+
 }
 
 article {
@@ -62,8 +79,7 @@ main {
 }
 
 #audio {
-    margin-top: 3%;
-    margin-left: 19%;
+    margin-left: 20%;
 }
 
 .map-section {
@@ -80,20 +96,32 @@ footer {
     grid-area: footer;
     text-align: center;
 }
-
+/* 
 #map {
-    height: 30vh;
+   /* height: 30vh;
     margin-top: 20%;
 }
-
+*/ 
 #music-player-image {
     width: 100%;
     height: 100%;
+    width: 35vh;
+    height: 35vh;
+    margin-top: 10%;
+    margin-right: 50%;
+    background: none;
+}
+
+#music-player-image {
+    width: 1000vh;
+    height: 1000vh;
+    margin-left: 10%;
+    margin-bottom: 20%;
 }
 
 img {
-    width: 100px;
-    height: 70px;
+    width: 10vh;
+    height: 10vh;
 }
 
 .button-position {
@@ -102,11 +130,12 @@ img {
     width: 15rem;
     height: 3rem;
     position: relative;
-    padding: 8px 16px;
     border: none;
     outline: none;
     border-radius: 3px;
-    margin-bottom: 50%;
+    margin-top: 30%;
+    margin-left: 8%;
+
 }
 
 .button:active {
