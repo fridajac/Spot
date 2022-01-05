@@ -41,9 +41,6 @@ header {
 #batman input {
     display: inline-block;
 }
-.input-field-loader {
-
-}
 
 article {
     grid-area: article;
