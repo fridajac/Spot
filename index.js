@@ -31,7 +31,7 @@ function showSearchField() {
 }
 
 async function getTracksFromCity() {
-    loadingBar[0].style.display = 'block';
+    loadingBar[0].style.display = 'inline-block';
     let input = textBox.value.toString();
     const tracks = await fetchTracks(input);
     displayTracksInList(tracks);
