@@ -94,7 +94,8 @@ footer {
     width: 35vh;
     height: 35vh;
     margin-top: 5%;
-    background: none
+    background: none;
+    margin-left: 2rem;
 }
 
 #music-player-image {
@@ -183,8 +184,18 @@ img {
 }
 
 table {
-    padding-right: 10rem;
     cursor: pointer;
+}
+
+th,
+td {
+    width: 140px;
+    text-align: center;
+    padding: 5px;
+}
+
+th {
+    border: 1px solid black;
 }
 
 #music-player-image {
