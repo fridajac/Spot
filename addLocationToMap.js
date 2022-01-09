@@ -1,4 +1,4 @@
-const mymap = L.map('map');
+
 
 export async function addLocationToMap(latitude, longitude) {
 
