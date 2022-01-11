@@ -13,6 +13,17 @@ body {
     background-color: #D5F2E2;
 }
 
+th,
+td {
+    width: 140px;
+    text-align: center;
+    padding: 5px;
+}
+
+th {
+    border: 1px solid black;
+}
+
 header {
     grid-area: header;
     margin: 0%;
